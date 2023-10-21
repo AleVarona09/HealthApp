@@ -1,3 +1,5 @@
+using HealthApp.Core.Configuration;
+using HealthApp.Core.IConfiguration;
 using HealthApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUnityOfWork,UnityOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("SqLite")));
 

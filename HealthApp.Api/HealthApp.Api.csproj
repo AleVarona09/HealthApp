@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\HealthApp.Core\HealthApp.Core.csproj" />
     <ProjectReference Include="..\HealthApp.Infrastructure\HealthApp.Infrastructure.csproj" />
   </ItemGroup>
