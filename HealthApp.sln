@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Api", "HealthApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Infrastructure", "HealthApp.Infrastructure\HealthApp.Infrastructure.csproj", "{6C7BE031-3AB1-4A3E-89AC-58FEFD02DD71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Core", "HealthApp.Core\HealthApp.Core.csproj", "{15A7818B-6471-4D6C-BA9B-06F00C3E98CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6C7BE031-3AB1-4A3E-89AC-58FEFD02DD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7BE031-3AB1-4A3E-89AC-58FEFD02DD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C7BE031-3AB1-4A3E-89AC-58FEFD02DD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A7818B-6471-4D6C-BA9B-06F00C3E98CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A7818B-6471-4D6C-BA9B-06F00C3E98CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A7818B-6471-4D6C-BA9B-06F00C3E98CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A7818B-6471-4D6C-BA9B-06F00C3E98CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
