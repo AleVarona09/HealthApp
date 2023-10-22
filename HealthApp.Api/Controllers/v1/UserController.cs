@@ -3,12 +3,14 @@ using HealthApp.Core.IConfiguration;
 using HealthApp.Infrastructure.Data;
 using HealthApp.Infrastructure.Dtos.Request;
 using HealthApp.Infrastructure.Entities.DbSet;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthApp.Api.Controllers.v1
 {
-
+    [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : BaseController
     {
 
