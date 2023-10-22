@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using HealthApp.Core.Configuration;
 using HealthApp.Core.IConfiguration;
 using HealthApp.Infrastructure.Data;
@@ -15,6 +16,12 @@ builder.Services.AddScoped<IUnityOfWork,UnityOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("SqLite")));
 
+builder.Services.AddApiVersioning(opt =>
+{
+    opt.ReportApiVersions = true;
+    opt.AssumeDefaultVersionWhenUnspecified = true;
+    opt.DefaultApiVersion = ApiVersion.Default;
+});
 
 var app = builder.Build();
 

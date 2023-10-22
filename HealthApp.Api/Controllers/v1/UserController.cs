@@ -1,37 +1,32 @@
-﻿using HealthApp.Core.IConfiguration;
+﻿using Asp.Versioning;
+using HealthApp.Core.IConfiguration;
 using HealthApp.Infrastructure.Data;
 using HealthApp.Infrastructure.Dtos.Request;
 using HealthApp.Infrastructure.Entities.DbSet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HealthApp.Api.Controllers
+namespace HealthApp.Api.Controllers.v1
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+
+    public class UserController : BaseController
     {
-        private IUnityOfWork _uow;
 
-
-        public UserController(IUnityOfWork uow)
-        {
-            _uow = uow;
-        }
-
+        public UserController(IUnityOfWork uow):base(uow)
+        {}
 
         #region Get
 
         [HttpGet]
         [Route("GetByEmail")]
-        public async Task<IActionResult> GetByEmail(string email) 
+        public async Task<IActionResult> GetByEmail(string email)
         {
-            var user = await _uow.Users.GetByEmail(email); 
+            var user = await _uow.Users.GetByEmail(email);
             if (user != null)
             {
                 return Ok(user);
             }
-            
+
             return NotFound();
         }
 
@@ -65,7 +60,7 @@ namespace HealthApp.Api.Controllers
         [Route("AddUser")]
         public async Task<IActionResult> AddUser(UserDto userDto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new User()
                 {
@@ -83,7 +78,7 @@ namespace HealthApp.Api.Controllers
 
                 return CreatedAtRoute("GetUser", new { id = user.Id }, user);
             }
-            return BadRequest();        
+            return BadRequest();
         }
 
         #endregion
