@@ -16,13 +16,14 @@ namespace HealthApp.Core.Configuration
         private readonly AppDbContext _dbContext;
         private readonly ILogger _logger;
         public IUserRepository Users { get; private set; }
-
+        public IRefreshTokenRepository RefreshTokens { get; private set; }
         public UnityOfWork(AppDbContext dbContext, ILoggerFactory logger)
         {
             _dbContext = dbContext;
             _logger = logger.CreateLogger("db_logs");
 
             Users = new UserRepository(dbContext,_logger);
+            RefreshTokens = new RefreshTokenRepository(dbContext,_logger);
         }
 
         public async Task CompleteAsync()

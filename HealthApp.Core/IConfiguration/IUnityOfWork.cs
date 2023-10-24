@@ -10,6 +10,7 @@ namespace HealthApp.Core.IConfiguration
     public interface IUnityOfWork
     {
         IUserRepository Users { get; }
+        IRefreshTokenRepository RefreshTokens { get; }
         Task CompleteAsync();
 
     }

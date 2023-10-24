@@ -9,5 +9,6 @@ namespace HealthApp.Authentication.Configuration
     public class JwtConfig
     {
         public string Key { get; set; }
+        public TimeSpan ExpiryTimeFrame { get; set; }
     }
 }
