@@ -6,6 +6,7 @@ using HealthApp.Infrastructure.Entities.DbSet;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthApp.Api.Controllers.v1
@@ -14,7 +15,7 @@ namespace HealthApp.Api.Controllers.v1
     public class UserController : BaseController
     {
 
-        public UserController(IUnityOfWork uow):base(uow)
+        public UserController(IUnityOfWork uow, UserManager<IdentityUser> userManager) :base(uow, userManager)
         {}
 
         #region Get

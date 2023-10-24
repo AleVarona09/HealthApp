@@ -15,6 +15,9 @@ namespace HealthApp.Infrastructure.Entities.DbSet
         public string Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
+        public string Sex { get; set; }
+        public string MobilePhone { get; set; }
+        public string Address { get; set; }
 
     }
 }

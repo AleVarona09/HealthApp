@@ -44,5 +44,43 @@ namespace HealthApp.Infrastructure.Repository
                 return new User();
             }
         }
+
+        public async Task<User> GetByIdentityId(Guid id)
+        {
+            try
+            {
+                return await dbSet.Where(x => x.Status == 1 && x.IdentityId == id).AsNoTracking().FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "{Repo} GetByIdentityId method", typeof(UserRepository));
+                return new User();
+            }
+        }
+
+        public async Task<bool> UpdateUserProfile(User user)
+        {
+            try
+            {
+                var dbUser = await dbSet.Where(x => x.Status==1 && x.Id == user.Id).FirstOrDefaultAsync();
+                if (dbUser == null) return false;
+
+                dbUser.FirstName = user.FirstName;
+                dbUser.LastName = user.LastName;
+                dbUser.MobilePhone = user.MobilePhone;
+                dbUser.Phone = user.Phone;
+                dbUser.Sex = user.Sex;
+                dbUser.Address = user.Address;
+                dbUser.Email = user.Email;
+                dbUser.UpdateDate = DateTime.UtcNow;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "{Repo} UpdateUserProfile method", typeof(UserRepository));
+                return false;
+            }
+        }
     }
 }

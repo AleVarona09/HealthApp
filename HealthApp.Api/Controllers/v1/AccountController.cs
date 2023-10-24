@@ -19,14 +19,12 @@ namespace HealthApp.Api.Controllers.v1
 {
     public class AccountController : BaseController
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly JwtConfig _jwtConfig;
         private readonly TokenValidationParameters _tokenValidationParameters;
 
         public AccountController(IUnityOfWork uow, UserManager<IdentityUser> userManager, 
-                                JwtConfig jwtConfig, TokenValidationParameters tokenValidationParameters) : base(uow)
+                                JwtConfig jwtConfig, TokenValidationParameters tokenValidationParameters) : base(uow, userManager)
         { 
-            _userManager = userManager;
             _jwtConfig = jwtConfig;
             _tokenValidationParameters = tokenValidationParameters;
         }
@@ -317,6 +315,7 @@ namespace HealthApp.Api.Controllers.v1
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("Id", user.Id),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
